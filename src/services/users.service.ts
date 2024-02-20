@@ -5,8 +5,8 @@ import {IRes} from "../types/axios.type";
 
 
 const usersService = {
-    getAll: ():IRes<IUser[]> => axiosService.get(urls.users),
-    getById: (id: string): IRes<IUser> => axiosService.get(`${urls.users}/${id}`)
+    getAll: ():IRes<IUser[]> => axiosService.get(urls.users.users),
+    getById: (id: string): IRes<IUser> => axiosService.get(urls.users.byId(id))
 };
 
 export {

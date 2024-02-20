@@ -1,7 +1,11 @@
 const baseURL = 'https://jsonplaceholder.typicode.com';
 
+const users = '/users';
 const urls = {
-    users: '/users'
+    users: {
+        users,
+        byId: (id: string): string => `${users}/${id}`
+    }
 };
 
 export {

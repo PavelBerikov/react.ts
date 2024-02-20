@@ -1,13 +1,26 @@
-import React, {FC} from 'react';
+import React, {useEffect, useState} from 'react';
+import {UserDetails} from "../components/UserDetails";
+import {useParams} from "react-router-dom";
 import {useAppLocation} from "../hooks/router.hooks";
 import {IUser} from "../interfaces/user.interface";
-import {UserDetails} from "../components/UserDetails";
+import {usersService} from "../services/users.service";
 
-const UserDetailsPage: FC = () => {
+const UserDetailsPage = () => {
+    const {id} = useParams();
     const {state} = useAppLocation<IUser>();
+    const [user, setUser] = useState<IUser>(null);
+    useEffect(() => {
+        if (!state){
+            usersService.getById(id).then(value => value.data).then(value => setUser(value))
+        }else {
+            setUser(state)
+        }
+    }, [id, state])
     return (
         <div>
-            <UserDetails user={state}/>
+            {
+                user && <UserDetails user={user}/>
+            }
         </div>
     );
 };
