@@ -3,13 +3,16 @@ import ReactDOM from 'react-dom/client';
 
 import App from './App';
 import {BrowserRouter} from "react-router-dom";
+import {Provider} from "react-redux";
+import {setupStore} from "./redux";
 
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+const store = setupStore();
 root.render(
-    <App/>
+    <Provider store={store}><BrowserRouter><App/></BrowserRouter></Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function
