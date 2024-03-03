@@ -76,7 +76,6 @@ const slice = createSlice({
 
             .addMatcher(isRejectedWithValue(), (state, action) => {
                 state.errors = action.payload
-                console.log(state.errors)
             })
             .addMatcher(isFulfilled(save, update, deleter), state => {
                 state.trigger = !state.trigger

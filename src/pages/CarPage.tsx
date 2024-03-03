@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import {CarForm, Cars} from "../components";
+import {CarForm, Cars, Header} from "../components";
 import {useAppSelector} from "../hooks";
 
 const CarPage: FC = () => {
@@ -8,7 +8,14 @@ const CarPage: FC = () => {
     return (
         <div>
             <CarForm/>
-            {errors&& <h1>{errors.brand}<hr/>{errors.price}<hr/>{errors.year}</h1>}
+            {
+                errors&& <div>
+                    <h1>{errors.brand}</h1>
+                    <h1>{errors.price}</h1>
+                    <h1>{errors.year}</h1>
+                    <h1>{errors.detail}</h1>
+                </div>
+            }
             <Cars/>
         </div>
     );
