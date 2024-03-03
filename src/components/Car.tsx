@@ -7,7 +7,7 @@ interface IProps{
     car: ICar
 }
 const Car: FC<IProps> = ({car}) => {
-    /*const {carForUpdate} = useAppSelector(state => state.cars);*/
+
     const dispatch = useAppDispatch();
     const {id, brand, price, year} = car;
     return (
