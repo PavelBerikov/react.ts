@@ -1,11 +1,11 @@
 import {IRes} from "../types";
-import {ICar} from "../interfaces";
+import {ICar, IPagination} from "../interfaces";
 import {axiosService} from "./axios.service";
 import {urls} from "../constants";
 
 
 class CarsService{
-    getAll():IRes<ICar[]> {
+    getAll():IRes<IPagination<ICar>> {
         return axiosService.get(urls.cars)
     };
     create(car: ICar):IRes<ICar>{

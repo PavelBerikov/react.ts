@@ -18,6 +18,11 @@ class AuthService{
         const {data: me}:AxiosResponse<IUser> = await this.me();
         return me
     }
+    async refresh(): Promise<void>{
+        const refreshToken = this.getRefreshToken();
+        const {data}:AxiosResponse<ITokens> = await axiosService.post(urls.auth.refresh, {refresh: refreshToken});
+        this.setTokens(data)
+    }
     me():IRes<IUser>{
         return  axiosService.get(urls.auth.me)
     }
@@ -27,6 +32,9 @@ class AuthService{
     }
     getAccessToken():string{
         return localStorage.getItem(this.accessKey)
+    }
+    private getRefreshToken():string{
+        return localStorage.getItem(this.refreshKey)
     }
     deleteToken():void{
         localStorage.removeItem(this.accessKey)
