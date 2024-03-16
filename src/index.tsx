@@ -2,9 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 
 import App from './App';
-import {BrowserRouter} from "react-router-dom";
+import {unstable_HistoryRouter as BrowserRouter} from "react-router-dom";
 import {Provider} from "react-redux";
 import {setupStore} from "./redux";
+import {history} from './services'
 
 
 const root = ReactDOM.createRoot(
@@ -12,7 +13,12 @@ const root = ReactDOM.createRoot(
 );
 const store = setupStore();
 root.render(
-    <Provider store={store}><BrowserRouter><App/></BrowserRouter></Provider>
+    <Provider store={store}>
+        {/*// @ts-expect-error*/}
+        <BrowserRouter history={history}>
+            <App/>
+        </BrowserRouter>
+    </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function
