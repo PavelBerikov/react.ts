@@ -2,7 +2,7 @@ import React from 'react';
 import {Navigate, Route, Routes} from "react-router-dom";
 import {MainLayout} from "./layouts";
 import {CarPage, LoginPage, RegisterPage} from "./pages";
-import {RequiredAuth} from "./components/hoc";
+import {RequiredAuth} from "./hoc";
 
 
 const App = () => {

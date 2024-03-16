@@ -1,5 +1,5 @@
 import React, {FC, ReactElement} from 'react';
-import {authService} from "../../services";
+import {authService} from "../services";
 import {Navigate} from "react-router-dom";
 
 interface IProps{

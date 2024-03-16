@@ -1,4 +1,4 @@
-import {IAuth, ITokens, IUser} from "../interfaces";
+import {IAuth, ICar, ITokens, IUser} from "../interfaces";
 import {IRes} from "../types";
 import {axiosService} from "./axios.service";
 import {urls} from "../constants";
@@ -37,6 +37,9 @@ class AuthService{
     deleteTokens(): void{
         localStorage.removeItem(this.refreshToken)
         localStorage.removeItem(this.accessToken)
+    }
+    addPhoto(id: number, photo: FormData):IRes<ICar>{
+        return axiosService.put(urls.addPhoto(id), photo)
     }
 }
 
