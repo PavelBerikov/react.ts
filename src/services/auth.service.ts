@@ -38,9 +38,7 @@ class AuthService{
         localStorage.removeItem(this.refreshToken)
         localStorage.removeItem(this.accessToken)
     }
-    addPhoto(id: number, photo: FormData):IRes<ICar>{
-        return axiosService.put(urls.addPhoto(id), photo)
-    }
+
 }
 
 export const authService = new AuthService()
